@@ -1,0 +1,6 @@
+*.asv
+*.csv
+*.jpeg
+*.avi
+*.xlsx
+.DS_Store
