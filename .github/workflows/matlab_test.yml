@@ -17,9 +17,11 @@ jobs:
       # Sets up MATLAB on the GitHub Actions runner
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
-  
+      - name: Change Directry
+        run: cd 01_ideal_pose_maker
       - name: Run script
         uses: matlab-actions/run-command@v1
         with:
-          command: addpath('01_ideal_pose_maker'),ideal_arm_theta_demo_wave
-          #command: ideal_arm_theta_demo_test
+          command: ideal_arm_theta_demo_wave
+          #command: addpath('01_ideal_pose_maker'),ideal_arm_theta_demo_wave
+          
