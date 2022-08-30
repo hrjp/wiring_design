@@ -27,17 +27,11 @@ jobs:
       # Sets up MATLAB on the GitHub Actions runner
       - name: Setup MATLAB
         uses: matlab-actions/setup-matlab@v1
-
-      # Runs a set of commands using the runners shell
-      - name: Run all tests
-        uses: matlab-actions/run-tests@v1
-        with:
-          source-folder: test
   
       - name: Run script
         uses: matlab-actions/run-command@v1
         with:
-          command: ideal_arm_theta_demo_test
+          command: addpath(01_ideal_pose_maker),ideal_arm_theta_demo_wave
 
       # As an alternative to run-tests, you can use run-command to execute a MATLAB script, function, or statement.
       #- name: Run all tests
