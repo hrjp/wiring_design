@@ -33,6 +33,11 @@ jobs:
         uses: matlab-actions/run-tests@v1
         with:
           source-folder: test
+  
+      - name: Run script
+        uses: matlab-actions/run-command@v1
+        with:
+          command: ideal_arm_theta_demo_test
 
       # As an alternative to run-tests, you can use run-command to execute a MATLAB script, function, or statement.
       #- name: Run all tests
