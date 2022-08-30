@@ -14,4 +14,5 @@ jobs:
       - name: Run script
         uses: matlab-actions/run-command@v1
         with:
-          command: 01_ideal_pose_maker/ideal_theta_demo_test
+          select-by-folder:  01_ideal_pose_maker
+          command: ideal_theta_demo_test
