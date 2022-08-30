@@ -23,5 +23,5 @@ jobs:
         uses: matlab-actions/run-command@v1
         with:
           #command: ideal_arm_theta_demo_wave
-          command: addpath('01_ideal_pose_maker'),ideal_arm_theta_demo_wave
+          command: addpath('test'),ideal_arm_theta_demo_test
           
