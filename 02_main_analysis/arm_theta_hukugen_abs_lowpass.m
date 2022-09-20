@@ -67,11 +67,6 @@ for pat = 1:pat_n
             x_1(1,i+1) = pp(1,i);
             y_1(1,i+1) = pp(2,i);
         end
-        
-        if state==2
-            x_2=x_1;
-            y_2=y_1;
-        end
 % 
 % 
 % 
