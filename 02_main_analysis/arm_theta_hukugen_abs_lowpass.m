@@ -20,7 +20,7 @@ theta_ideal = readmatrix('../01_ideal_pose_maker/output/ideal_theta_abs.csv');
 theta_ideal(1,:) = [];
 pat_n = size(theta_h,1);      %å¬•ª—v‘f”
 color=['r','g']; %Ô@—‘zp¨@—Î@ÀŒ»p¨
-output_filename = append('output/rsme.csv');
+output_filename = append('output/rmse.csv');
 rsme=zeros(pat_n+1,2);
 for pat = 1:pat_n
     figure
