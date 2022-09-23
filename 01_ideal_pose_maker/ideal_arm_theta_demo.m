@@ -37,30 +37,30 @@ filename_1 = sprintf('output/ideal_theta');
     end
     
     % exp wave
-    phase=[0.4,0.7,1.0];
-    for j=2:4
-        theta_r_tmp=zeros(m);
-        for i=1:m
-            theta_r_tmp(i)=atan2(wave_exp((i)/m,phase(j-1))-wave_exp((i-1)/m,phase(j-1)),1/m)*180/pi;
-        end
-        theta_r(j,1)=theta_r_tmp(1);
-        for i=2:m
-            theta_r(j,i)=theta_r_tmp(i)-theta_r_tmp(i-1);
-        end
-    end
-    
-    % sin wave
-%     phase=[0.1,0.3,0.6];
+%     phase=[0.4,0.7,1.0];
 %     for j=2:4
 %         theta_r_tmp=zeros(m);
 %         for i=1:m
-%             theta_r_tmp(i)=atan2(wave_sin((i)/m,phase(j-1))-wave_sin((i-1)/m,phase(j-1)),1/m)*180/pi;
+%             theta_r_tmp(i)=atan2(wave_exp((i)/m,phase(j-1))-wave_exp((i-1)/m,phase(j-1)),1/m)*180/pi;
 %         end
 %         theta_r(j,1)=theta_r_tmp(1);
 %         for i=2:m
 %             theta_r(j,i)=theta_r_tmp(i)-theta_r_tmp(i-1);
 %         end
 %     end
+    
+    % sin wave
+    phase=[0.1,0.3,0.6];
+    for j=2:4
+        theta_r_tmp=zeros(m);
+        for i=1:m
+            theta_r_tmp(i)=atan2(wave_sin((i)/m,phase(j-1))-wave_sin((i-1)/m,phase(j-1)),1/m)*180/pi;
+        end
+        theta_r(j,1)=theta_r_tmp(1);
+        for i=2:m
+            theta_r(j,i)=theta_r_tmp(i)-theta_r_tmp(i-1);
+        end
+    end
     
     
     

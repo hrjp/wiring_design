@@ -133,11 +133,11 @@ for pat = 1:pat_n
     
     %•½‹Ï2æ•Î·‚ÌŒvZ
     for i = 1:m
-        rsme(pat,1)=rsme(pat,1)+(theta_ideal(pat,i)-theta_h(pat,i))*(theta_ideal(pat,i)-theta_h(pat,i));
-        rsme(pat,2)=rsme(pat,2)+(x_1s(1,i)-x_1s(2,i))^2+(y_1s(1,i)-y_1s(2,i))^2;
+        rsme(pat,2)=rsme(pat,2)+(theta_ideal(pat,i)-theta_h(pat,i))*(theta_ideal(pat,i)-theta_h(pat,i));
+        rsme(pat,1)=rsme(pat,1)+(x_1s(1,i)-x_1s(2,i))^2+(y_1s(1,i)-y_1s(2,i))^2;
     end
-    rsme(pat,1)=(rsme(pat,1)^0.5)/m*180/pi;
-    rsme(pat,2)=(rsme(pat,2)^0.5)/m;
+    rsme(pat,2)=(rsme(pat,2)^0.5)/m*180/pi;
+    rsme(pat,1)=(rsme(pat,1)^0.5)/m;
 end
 for i=1:2
     for pat = 1:pat_n
