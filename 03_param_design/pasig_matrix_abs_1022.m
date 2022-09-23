@@ -2,7 +2,7 @@
 
 clear all
 
-m = 50;         %ŠÖß”
+m = 30;         %ŠÖß”
 l = zeros(1,m);     %ƒŠƒ“ƒN’·‚³ [mm]
 l(1,:) = 6;
 %%n = m;             %ƒsƒ“”
