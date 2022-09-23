@@ -20,6 +20,8 @@ theta_ideal = readmatrix('../01_ideal_pose_maker/output/ideal_theta_abs.csv');
 theta_ideal(1,:) = [];
 pat_n = size(theta_h,1);      %å¬•ª—v‘f”
 color=['r','g']; %Ô@—‘zp¨@—Î@ÀŒ»p¨
+output_filename = append('output/rsme.csv');
+rsme=zeros(pat_n+1,2);
 for pat = 1:pat_n
     figure
     hold on
@@ -108,6 +110,8 @@ for pat = 1:pat_n
         %plot(x_1,y_1,'b-o','MarkerSize',4);
         %plot(x_1,y_1,'b-','MarkerSize',1);
         plot(x_1,y_1,'g-o','LineWidth',0.5,'MarkerSize',1,'Color',color(state));
+        x_1s(state,:)=x_1;
+        y_1s(state,:)=y_1;
     %     for i=1:m+1
     %         hold on
     %         plot(po1(:,i),po2(:,i),'k-','LineWidth',2);
@@ -126,4 +130,18 @@ for pat = 1:pat_n
     end
     saveas(gcf,fig_file1)
     hold off
+    
+    %•½‹Ï2æ•Î·‚ÌŒvZ
+    for i = 1:m
+        rsme(pat,1)=rsme(pat,1)+(theta_ideal(pat,i)-theta_h(pat,i))*(theta_ideal(pat,i)-theta_h(pat,i));
+        rsme(pat,2)=rsme(pat,2)+(x_1s(1,i)-x_1s(2,i))^2+(y_1s(1,i)-y_1s(2,i))^2;
+    end
+    rsme(pat,1)=(rsme(pat,1)^0.5)/m*180/pi;
+    rsme(pat,2)=(rsme(pat,2)^0.5)/m;
 end
+for i=1:2
+    for pat = 1:pat_n
+        rsme(pat_n+1,i)=rsme(pat_n+1,i)+rsme(pat,i)/pat_n;
+    end
+end
+writematrix(rsme',output_filename);
