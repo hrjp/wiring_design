@@ -2,7 +2,7 @@
 
 %M = readmatrix('main_matrix_abs_s.csv');
 M = readmatrix('output/main_matrix_lowpass.csv');
-Y = readmatrix('output/main_Y2.csv');
+Y = readmatrix('output/main_Y.csv');
 theta0 = readmatrix('output/main_theta0_abs_s.csv');
 
 A_f = M *  Y.' + theta0;

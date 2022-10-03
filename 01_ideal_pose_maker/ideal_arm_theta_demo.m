@@ -3,7 +3,7 @@
 %10リンクワイヤー指モデル　準静的問題
 
 clear all
-ideal_pat = [1 2 3 4];
+ideal_pat = [1 2 3 4 5];
 
 
 pat_n = size(ideal_pat,2);      %パターン数
@@ -50,11 +50,24 @@ filename_1 = sprintf('output/ideal_theta');
 %     end
     
     % sin wave
-    phase=[0.1,0.3,0.6];
+%     phase=[0.1,0.3,0.6];
+%     for j=2:4
+%         theta_r_tmp=zeros(m);
+%         for i=1:m
+%             theta_r_tmp(i)=atan2(wave_sin((i)/m,phase(j-1))-wave_sin((i-1)/m,phase(j-1)),1/m)*180/pi;
+%         end
+%         theta_r(j,1)=theta_r_tmp(1);
+%         for i=2:m
+%             theta_r(j,i)=theta_r_tmp(i)-theta_r_tmp(i-1);
+%         end
+%     end
+    
+    % zerosum exp wave
+    phase=[0.4,0.7,1.0 0.4,0.7,1.0];
     for j=2:4
         theta_r_tmp=zeros(m);
         for i=1:m
-            theta_r_tmp(i)=atan2(wave_sin((i)/m,phase(j-1))-wave_sin((i-1)/m,phase(j-1)),1/m)*180/pi;
+            theta_r_tmp(i)=atan2(wave_exp((i)/m,phase(j-1))-wave_exp((i-1)/m,phase(j-1)),1/m)*180/pi;
         end
         theta_r(j,1)=theta_r_tmp(1);
         for i=2:m
@@ -62,7 +75,18 @@ filename_1 = sprintf('output/ideal_theta');
         end
     end
     
-    
+    theta_r_tmp=zeros(m);
+    for j=5:7
+        
+        for i=1:m
+            theta_r_tmp(i)=theta_r_tmp(i)+atan2(-wave_exp((i)/m,phase(j-1))+wave_exp((i-1)/m,phase(j-1)),1/m)*180/pi;
+        end
+    end
+    j=5;
+    theta_r(j,1)=theta_r_tmp(1);
+    for i=2:m
+        theta_r(j,i)=theta_r_tmp(i)-theta_r_tmp(i-1);
+    end
     
     
 theta_r = theta_r * pi/180;%[rad]

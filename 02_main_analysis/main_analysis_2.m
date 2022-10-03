@@ -12,7 +12,7 @@ filename_7 = sprintf('output/main_ratios_d');
 filename_8 = sprintf('output/main_theta0');
 
 %m = 100;         %関節数
-min_d = 0.8; %累積寄与率
+min_d = 0.85; %累積寄与率
 
 %目標データのインポート
 A_raw = readmatrix('../01_ideal_pose_maker/output/ideal_theta_abs.csv');
@@ -127,7 +127,8 @@ sum_che_3 = sum( abs(che_3) ,1);
 theta0 =  zeros(components,number);
 
 for i = 1:number
-    theta0(:,i) = Y0(:,i) + avg(:);
+    %theta0(:,i) = Y0(:,i) + avg(:);
+    theta0(:,i) = avg(:);
 end
 
 
