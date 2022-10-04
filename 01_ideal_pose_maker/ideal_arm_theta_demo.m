@@ -6,7 +6,7 @@ clear all
 
 
 ideal_pat_num=3; %目標姿勢の数
-ideal_pat_all_num=ideal_pat_num+1; %目標姿勢+ダミー目標姿勢の数
+ideal_pat_all_num=ideal_pat_num+1+1; %目標姿勢+ダミー目標姿勢+初期姿勢
 
 ideal_pat = [1:ideal_pat_all_num];
 pat_n = size(ideal_pat,2);      %パターン数
@@ -36,10 +36,7 @@ filename_1 = sprintf('output/ideal_theta');
 %%
 %%%目標姿勢の作成%%%
 
-    %01 初期姿勢
-%     for i = 1:m
-%        theta_r(1,i) = 0; 
-%     end
+
     
     % exp wave
 %     phase=[0.4,0.7,1.0];
@@ -81,22 +78,21 @@ filename_1 = sprintf('output/ideal_theta');
         end
         k=k+1;
     end
-        %ダミー姿勢
-    theta_r_tmp=zeros(m);
-    k=1;
+
+
+%ダミー姿勢
+for i=1:m
+    tmp=0;
     for j=1:ideal_pat_num
-        for i=1:m
-            theta_r_tmp(i)=theta_r_tmp(i)+atan2(-wave_exp((i)/m,phase(k))+wave_exp((i-1)/m,phase(k)),1/m)*180/pi;
-        end
-        k=k+1;
+    tmp=tmp+theta_r(j,i);
     end
-    j=ideal_pat_all_num;
-    theta_r(j,1)=theta_r_tmp(1);
-    for i=2:m
-        theta_r(j,i)=theta_r_tmp(i)-theta_r_tmp(i-1);
-    end
+    theta_r(ideal_pat_num+1,i)=-tmp;
+end
     
- 
+%初期姿勢
+for i = 1:m
+   theta_r(ideal_pat_all_num,i) = 0; 
+end
  
 %%
 theta_r = theta_r * pi/180;%[rad]
