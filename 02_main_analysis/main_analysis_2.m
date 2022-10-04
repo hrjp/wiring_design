@@ -12,7 +12,7 @@ filename_7 = sprintf('output/main_ratios_d');
 filename_8 = sprintf('output/main_theta0');
 
 %m = 100;         %関節数
-min_d = 0.85; %累積寄与率
+min_d = 0.7; %累積寄与率
 
 %目標データのインポート
 A_raw = readmatrix('../01_ideal_pose_maker/output/ideal_theta_abs.csv');
@@ -68,6 +68,8 @@ for i = 1 : components    %行列Dのサイズは(componets * components)
         P_C_S(:,j) = V(:,i); %Principal Components Score
         if sum_ratios_d(i) > min_d  %累積寄与率がmin_dを超えるまで使う
             check = 1;
+            disp(['累積寄与率 : ',num2str(sum_ratios_d(i))]);
+            disp(['制御用ワイヤー本数 : ',num2str(i)]);
         end
     end
 end
