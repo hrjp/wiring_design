@@ -63,7 +63,7 @@ filename_1 = sprintf('output/ideal_theta');
 %     end
     
     % zerosum exp wave
-    phase=[0.3,0.6,0.9 0.3,0.6,0.9];
+    phase=[0.4,0.7,1.0];
     for j=2:4
         theta_r_tmp=zeros(m);
         for i=1:m
@@ -77,9 +77,8 @@ filename_1 = sprintf('output/ideal_theta');
     
     theta_r_tmp=zeros(m);
     for j=5:7
-        
         for i=1:m
-            theta_r_tmp(i)=theta_r_tmp(i)+atan2(-wave_exp((i)/m,phase(j-1))+wave_exp((i-1)/m,phase(j-1)),1/m)*180/pi;
+            theta_r_tmp(i)=theta_r_tmp(i)+atan2(-wave_exp((i)/m,phase(j-1-3))+wave_exp((i-1)/m,phase(j-1-3)),1/m)*180/pi;
         end
     end
     j=5;

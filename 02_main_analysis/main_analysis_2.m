@@ -11,8 +11,7 @@ filename_6 = sprintf('output/main_A_hukugen');
 filename_7 = sprintf('output/main_ratios_d');
 filename_8 = sprintf('output/main_theta0');
 
-%m = 100;         %関節数
-min_d = 0.7; %累積寄与率
+wire_num = 2; %使用する制御用ワイヤーの本数
 
 %目標データのインポート
 A_raw = readmatrix('../01_ideal_pose_maker/output/ideal_theta_abs.csv');
@@ -61,18 +60,18 @@ P_C_S = zeros(components,components);
 
 % 行列の削減
 j = 0;
-check = 0;
 for i = 1 : components    %行列Dのサイズは(componets * components)
-    if check == 0       %除外条件
-        j = j + 1;
-        P_C_S(:,j) = V(:,i); %Principal Components Score
-        if sum_ratios_d(i) > min_d  %累積寄与率がmin_dを超えるまで使う
-            check = 1;
-            disp(['累積寄与率 : ',num2str(sum_ratios_d(i))]);
-            disp(['制御用ワイヤー本数 : ',num2str(i)]);
-        end
+    j = j + 1;
+    P_C_S(:,j) = V(:,i); %Principal Components Score
+    %if sum_ratios_d(i) > min_d  %累積寄与率がmin_dを超えるまで使う
+    if i>=wire_num
+        disp(['累積寄与率 : ',num2str(sum_ratios_d(i))]);
+        disp(['制御用ワイヤー本数 : ',num2str(i)]);
+        break
     end
 end
+
+
 
 P_C_S = P_C_S(1:components,1:j);
 Y = Normalization * P_C_S;
