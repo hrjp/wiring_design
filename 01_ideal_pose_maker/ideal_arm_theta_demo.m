@@ -37,7 +37,7 @@ filename_1 = sprintf('output/ideal_theta');
 %%%–Ú•Wp¨‚Ìì¬%%%
     
 % sin wave
-phase=[0.1,0.3,0.6];
+phase=[0.1,0.25,0.4];
 for j=1:3
     theta_r_tmp=zeros(m);
     for i=1:m
