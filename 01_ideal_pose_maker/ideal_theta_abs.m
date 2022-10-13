@@ -1,3 +1,4 @@
+%‘Š‘ÎÀ•W‚Ì–Ú•Wp¨‚ğâ‘ÎÀ•W‚É•ÏŠ·
 clear all
 
 str1 = 'output/ideal_theta';

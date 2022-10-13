@@ -4,14 +4,14 @@ clear all
 
 m = 30;         %関節数
 l = zeros(1,m);     %リンク長さ [mm]
-l(1,:) = 6;
+l(1,:) = 25;
 %%n = m;             %ピン数
 %pat = 5;        %目標姿勢パターン数
 
 k = zeros(1,m);
 k(1,:) = 830;
 %T_max = 16.6;
-T_max = 120;
+T_max = 60;
 
 %主成分分析行列インポート
 M = readmatrix('../02_main_analysis/output/main_matrix_lowpass.csv');
