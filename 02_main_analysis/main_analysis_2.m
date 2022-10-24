@@ -109,7 +109,8 @@ sum_che_2 = sum(abs(che_2),1);
 Y2 = zeros(number,components2);
 Ymin_2 = zeros(number,components2);
 for i = 1:number
-    Y2(i,:) = Y(i,:)-Ymin(1,:);
+    %Y2(i,:) = Y(i,:)-Ymin(1,:);
+    Y2(i,:) = Y(i,:);
     Ymin_2(i,:) = Ymin(1,:);
 end
 %オフセットY0

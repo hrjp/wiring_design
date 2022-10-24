@@ -37,11 +37,11 @@ T_s1 = zeros(pat_n,1);
 dT1 = zeros(pat_n,1);
 
 % どのパターンを再現するのか
-number_i = 5;          %使用パターン(pay_i < pat_n)
+%number_i = 4;          %使用パターン(pay_i < pat_n)
 
 number_n = size(Y2,1);
 
-%for number_i = 1:1
+for number_i = 1:1
     
     %目標張力　代入
     for pat = 1:pat_n
@@ -74,19 +74,19 @@ number_n = size(Y2,1);
 
     %オフセット角度 代入
     theta0 = zeros(1,size(Y_theta0,1));
-%     for i = 1:size(Y_theta0,1)
-%         theta0(1,i) = Y_theta0(i,number_i);
-%         %theta0(1,i) = Y0(i,number_i) + avg(1,i);
-%     end
+    for i = 1:size(Y_theta0,1)
+        theta0(1,i) = Y_theta0(i,number_i);
+        %theta0(1,i) = Y0(i,number_i) + avg(1,i);
+    end
     %オフセット角度 絶対系
     theta0_abs = zeros(1,size(Y_theta0,1));
-%     for i = 1:size(Y_theta0,1)
-%         if i == 1
-%             theta0_abs(1,i) = theta0(1,i);
-%         else
-%             theta0_abs(1,i) = theta0_abs(1,i-1)+theta0(1,i);
-%         end
-%     end
+    for i = 1:size(Y_theta0,1)
+        if i == 1
+            theta0_abs(1,i) = theta0(1,i);
+        else
+            theta0_abs(1,i) = theta0_abs(1,i-1)+theta0(1,i);
+        end
+    end
 
     loop_fin = 1;
     % %loop記録用
@@ -819,4 +819,4 @@ number_n = size(Y2,1);
 
    end
     
-%end
+end

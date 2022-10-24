@@ -11,7 +11,7 @@ l(1,:) = 25;
 k = zeros(1,m);
 k(1,:) = 830;
 %T_max = 16.6;
-T_max = 60;
+T_max = 120;
 
 %主成分分析行列インポート
 M = readmatrix('../02_main_analysis/output/main_matrix_lowpass.csv');
